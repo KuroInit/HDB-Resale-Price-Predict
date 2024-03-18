@@ -1,4 +1,4 @@
-#!/Users/kur0/Documents/Year1/sc1015_lab/Mini_Proj/.mini/bin/python3
+#!/Users/kur0/Documents/Year1/sc1015_lab/Mini_Proj/.mini/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys
