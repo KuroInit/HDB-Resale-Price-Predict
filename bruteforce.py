@@ -1,38 +1,47 @@
-def greedy_best_first_search(start_state, goal_state):
-    global maxFringeSize, goalNode
+from heapq import heappush, heappop
+
+def greedy_best_first_search(startState, heuristicFunc):
+    global goalNode, maxFringeSize, maxDepthReached
+    visited, pQueue = set(), list()
     
-    # Create a priority queue for GBFS and add the initial state with a priority based on the heuristic value.
-    frontier = PriorityQueue()
-    root = State(start_state, None, None, 0, heuristic(start_state, goal_state), 0)
-    frontier.put((root.heuristic, root))
+    # The key for GBFS is the heuristic value alone.
+    key = heuristicFunc(startState)
+    root = State(startState, None, None, 0, key)
+    entry = (key, root)
+    heappush(pQueue, entry)
     
-    # Set for keeping track of visited states.
-    explored = set()
-    explored.add(root.map)
-    
-    # Loop until all states are explored or the goal is found.
-    while not frontier.empty():
-        # Remove the state with the lowest heuristic value (highest priority) from the queue.
-        _, current_state = frontier.get()
+    while pQueue:
+        current_key, currentNode = heappop(pQueue)
+        visited.add(currentNode.map)
         
-        # Check if this state is the goal state.
-        if current_state.state == goal_state:
-            goalNode = current_state
+        # Check if the current node is the goal.
+        if currentNode.state == goalState:
+            goalNode = currentNode
             return True
         
-        # Generate all possible child states.
-        children = expand(current_state)
+        # Generate neighbors (successors)
+        neighbors = expand(currentNode)
+        for neighbor in neighbors:
+            # For GBFS, the priority is the heuristic value only.
+            neighbor.key = heuristicFunc(neighbor.state)
+            entry = (neighbor.key, neighbor)
+            if neighbor.map not in visited:
+                heappush(pQueue, entry)
+                visited.add(neighbor.map)
+                maxDepthReached = max(maxDepthReached, neighbor.depth)
         
-        # Add new states to the frontier if they haven't been explored or if they have a lower heuristic value.
-        for child in children:
-            if child.map not in explored:
-                child.heuristic = heuristic(child.state, goal_state)
-                frontier.put((child.heuristic, child))
-                explored.add(child.map)
-                # No need to track maxDepthReached since GBFS does not expand the deepest node first.
-        
-        # Keep track of the maximum size of the frontier.
-        maxFringeSize = max(maxFringeSize, frontier.qsize())
+        # Track the maximum size of the priority queue.
+        maxFringeSize = max(maxFringeSize, len(pQueue))
     
-    # Return False if no solution was found.
+    # If the function exits the loop, no solution was found
     return False
+
+# Example usage:
+# Define the heuristic function (e.g., Manhattan distance for 8-puzzle)
+def heuristicFunc(state):
+    # Implement the heuristic function here
+    pass
+
+# Define the State class and expand function as per your problem specification
+# Define the goal state accordingly
+goalState = [1, 2, 3, 4, 5, 6
