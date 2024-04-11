@@ -3,38 +3,39 @@ from heapq import heappush, heappop
 def greedy_best_first_search(startState, heuristicFunc):
     global goalNode, maxFringeSize, maxDepthReached
     visited, pQueue = set(), list()
-    
-    # The key for GBFS is the heuristic value alone.
+
+    # For GBFS, the priority is determined only by the heuristic function.
     key = heuristicFunc(startState)
-    root = State(startState, None, None, 0, key)
-    entry = (key, root)
+    root = State(startState, None, None, 0, 0, key)
+    entry = (key, 0, root)  # Note: The second element is kept for consistency with your A* format.
     heappush(pQueue, entry)
-    
+
     while pQueue:
-        current_key, currentNode = heappop(pQueue)
-        visited.add(currentNode.map)
-        
-        # Check if the current node is the goal.
-        if currentNode.state == goalState:
-            goalNode = currentNode
-            return True
-        
-        # Generate neighbors (successors)
-        neighbors = expand(currentNode)
+        node = heappop(pQueue)
+        visited.add(node[2].map)
+
+        if node[2].state == goalState:
+            goalNode = node[2]
+            return True  # The goal has been reached.
+
+        neighbors = expand(node[2])
         for neighbor in neighbors:
-            # For GBFS, the priority is the heuristic value only.
+            # The node's key is the heuristic value since we're not considering the cost so far.
             neighbor.key = heuristicFunc(neighbor.state)
-            entry = (neighbor.key, neighbor)
+            entry = (neighbor.key, neighbor.move, neighbor)  # The second element is the move count.
+
+            # If it's not visited, or if it's a more efficient path, add to the queue.
             if neighbor.map not in visited:
                 heappush(pQueue, entry)
                 visited.add(neighbor.map)
+
+                # Update the maximum depth reached if necessary.
                 maxDepthReached = max(maxDepthReached, neighbor.depth)
         
-        # Track the maximum size of the priority queue.
+        # Update the maximum fringe size if necessary.
         maxFringeSize = max(maxFringeSize, len(pQueue))
-    
-    # If the function exits the loop, no solution was found
-    return False
+
+    return False  # If the queue is empty and the goal wasn't reached, return False.
 
 # Example usage:
 # Define the heuristic function (e.g., Manhattan distance for 8-puzzle)
@@ -44,4 +45,17 @@ def heuristicFunc(state):
 
 # Define the State class and expand function as per your problem specification
 # Define the goal state accordingly
-goalState = [1, 2, 3, 4, 5, 6
+goalState = [1, 2, 3, 4, 5, 6, 7, 8, 0]
+
+# Replace with your actual initial state
+startState = [1, 2, 3, 4, 5, 6, 0, 7, 8]
+
+# Initialize global variables
+goalNode, maxFringeSize, maxDepthReached = None, 0, 0
+
+# Perform Greedy Best-First Search
+found, remainingQueue = greedy_best_first_search(startState, heuristicFunc)
+if found:
+    print("Goal reached!")
+else:
+    print("Goal not reached.")
