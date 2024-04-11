@@ -3,9 +3,7 @@ from queue import Queue
 def brute_force_search(start_state):
     global maxDepthReached, maxFringeSize, goalNode
     
-    # Define the goal state for an 8-puzzle.
-    goal_state = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-    
+        
     # Create a queue for BFS and add the initial state.
     frontier = Queue()
     root = State(start_state, None, None, 0, 0, 0)
