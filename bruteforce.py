@@ -8,7 +8,7 @@ def branch_and_bound_search(start_state):
     root = State(start_state, None, None, 0, 0, 0)
     frontier.put((root.cost, root))
 
-    # Set for keeping track of visited states.
+    # Set for keeping track of visited states.asdsadasdsadsa
     explored = set()
     explored.add(root.map)
 
