@@ -1,0 +1,3 @@
+[submodule "tabnet1"]
+	path = tabnet1
+	url = https://github.com/ziyan0117/tabnet.git
