@@ -72,6 +72,6 @@ Install all packages
 
 ## References
 
-https://github.com/dreamquark-ai/tabnet
-https://arxiv.org/pdf/1908.07442.pdf
-https://xgboost.readthedocs.io/en/stable/
+https://github.com/dreamquark-ai/tabnet </br>
+https://arxiv.org/pdf/1908.07442.pdf </br>
+https://xgboost.readthedocs.io/en/stable/ </br>
