@@ -47,7 +47,6 @@ All models used in this project and saved are available [here](models)
 3. Logistic Regression from sklearn.
 4. Other packages such as joblib and json.
 5. Collaborating using GitHub.
-6. Concepts about Precision, Recall, and F1 Score.
 
 ## Datasets
 
