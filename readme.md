@@ -34,6 +34,12 @@ All models used in this project and saved are available [here](models)
 
 ## Conclusion
 
+- XGBoost with log transformation and TabNet are both competitive models in our evaluation.
+- XGBoost may appear as the best-performing model initially, but considering computational constraints and data availability, TabNet could surpass XGBoost in predicting resale value given adequate time.
+- TabNet adopts a different approach by considering complex interactions between features, unlike traditional models that treat variables independently.
+- The importance of a feature in TabNet doesn't solely indicate its standalone significance but rather its role in intricate feature interactions.
+- Features with low importance aren't necessarily uninformative; their significance may be context-dependent and emerge through interactions with other features.
+
 ## What did we learn?
 
 1. Handling skewed datasets using transformation methods.
@@ -67,6 +73,6 @@ Install all packages
 
 ## References
 
-    https://github.com/dreamquark-ai/tabnet
-    https://arxiv.org/pdf/1908.07442.pdf
-    https://xgboost.readthedocs.io/en/stable/
+https://github.com/dreamquark-ai/tabnet
+https://arxiv.org/pdf/1908.07442.pdf
+https://xgboost.readthedocs.io/en/stable/
