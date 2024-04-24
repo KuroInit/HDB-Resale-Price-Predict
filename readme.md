@@ -2,7 +2,7 @@
 
 ## About
 
-This is a mini-project fro SC1015 (Introduction to Data Science and Artifical Intelligence) which focuses on predicting HDB Resale Prices.
+This is a mini-project for SC1015 (Introduction to Data Science and Artifical Intelligence) which focuses on predicting HDB Resale Prices.
 
 For detailed walkthough, review notebooks in the following order:</br>
 
