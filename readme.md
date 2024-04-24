@@ -2,7 +2,7 @@
 
 ## About
 
-This is a mini-project fro SC1015 (Introduction to Data Science and Artifical Intelligence) which focuses on predicting HDB Resale Prices.
+This is a mini-project for SC1015 (Introduction to Data Science and Artifical Intelligence) which focuses on predicting HDB Resale Prices.
 
 For detailed walkthough, review notebooks in the following order:</br>
 
@@ -47,7 +47,6 @@ All models used in this project and saved are available [here](models)
 3. Logistic Regression from sklearn.
 4. Other packages such as joblib and json.
 5. Collaborating using GitHub.
-6. Concepts about Precision, Recall, and F1 Score.
 
 ## Datasets
 
@@ -73,6 +72,6 @@ Install all packages
 
 ## References
 
-https://github.com/dreamquark-ai/tabnet
-https://arxiv.org/pdf/1908.07442.pdf
-https://xgboost.readthedocs.io/en/stable/
+https://github.com/dreamquark-ai/tabnet </br>
+https://arxiv.org/pdf/1908.07442.pdf </br>
+https://xgboost.readthedocs.io/en/stable/ </br>
